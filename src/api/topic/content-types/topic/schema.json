@@ -24,6 +24,11 @@
       "relation": "manyToMany",
       "target": "api::article.article",
       "inversedBy": "topics"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
     }
   }
 }
