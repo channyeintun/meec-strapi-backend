@@ -48,7 +48,8 @@
     "slug": {
       "type": "uid",
       "targetField": "title",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "url": {
       "type": "string",

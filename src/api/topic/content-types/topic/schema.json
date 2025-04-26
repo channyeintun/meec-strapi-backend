@@ -28,7 +28,8 @@
     "slug": {
       "type": "uid",
       "targetField": "name",
-      "required": true
+      "required": true,
+      "unique": true
     }
   }
 }
