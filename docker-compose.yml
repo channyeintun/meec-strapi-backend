@@ -1,0 +1,53 @@
+services:
+  strapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: strapi-app:latest
+    container_name: strapi
+    environment:
+      - NODE_ENV=production
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=strapi
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_SSL=false
+      - APP_KEYS=Tr20QbOXkOVQUY/8ngNY7mPe1YPTAL8lx5Bl/88sQEI=,eAgvY1y/2IEdjF4nDCvTQuCie6EpWaOkgqn9Ts0xDag=
+      - API_TOKEN_SALT=jTOjWQeJgpFbQE8rR88s8JdoqRUbfzArDnAhw5QE5GU=
+      - ADMIN_JWT_SECRET=N0bfG1/JAol9Vdc2KVTcp41gALoxYS2asFB+pGp4XWI=
+      - JWT_SECRET=KLow3A50BH+sZDZQXBm0p2jg3FnN3qVCVeOmuHTh3D8=
+    ports:
+      - "1337:1337"
+    volumes:
+      - strapi-uploads:/app/public/uploads
+      - ./:/app
+    depends_on:
+      - postgres
+    networks:
+      - strapi-network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=strapi
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - strapi-network
+    restart: unless-stopped
+
+volumes:
+  strapi-uploads:
+    name: strapi-uploads
+  postgres-data:
+    name: postgres-data
+
+networks:
+  strapi-network:
+    driver: bridge
