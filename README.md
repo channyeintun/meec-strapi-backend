@@ -66,4 +66,11 @@ nvm use 22.14.0
 
 
 ## Docker
+```
 docker run -d --name postgres-earthquake -e POSTGRES_DB=earthquake-meec -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=password -p 5432:5432 postgres:latest
+```
+
+## Generate Secrets
+```
+openssl rand -base64 16
+```
