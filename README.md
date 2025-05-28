@@ -74,3 +74,8 @@ docker run -d --name postgres-earthquake -e POSTGRES_DB=earthquake-meec -e POSTG
 ```
 openssl rand -base64 16
 ```
+
+## PM2 
+```
+npx pm2 start npm --name meec-strapi-backend -- run start
+```
