@@ -62,7 +62,9 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 
 
 ## NVM
+```
 nvm use 22.14.0
+```
 
 
 ## Docker
